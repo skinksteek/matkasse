@@ -1,0 +1,26 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  .search-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    input {
+      border: 0;
+      border-bottom: 2px solid var(--white);
+      outline: 0;
+      font-size: 1.15rem;
+      color: #fff;
+      padding: 7px 0;
+      background: transparent;
+      transition: border-color 0.2s;
+      padding-left: 0.3125em;
+      margin-right: 1vh;
+    }
+    button {
+      margin-left: 1vh;
+    }
+    .list-wrapper {
+      display: flex;
+    }
+  }
+}
