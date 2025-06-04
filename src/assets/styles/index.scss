@@ -1,13 +1,27 @@
+@use "./form.scss";
+@use "./button.scss";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
-  --white: #fbf6e5;
-  --main-color: #a1624c;
-  --secondary-color: #a39992;
-  --grey: #2c2a28;
-  --lightblack: #242422;
+  --white: #ececec;
+  --turqoiuse: #9fd3c7;
+  --blue: #385170;
+  --darkblue: #142d4c;
+  --black: #000000;
+}
+* {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 body {
   margin: 0 auto;
-  background-color: var(--grey);
+  background-color: var(--darkblue);
   color: var(--white);
+
+  .header {
+    font-size: 46px;
+    text-align: center;
+  }
 }
