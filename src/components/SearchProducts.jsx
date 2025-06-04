@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { fetchProductsByQuery } from "../api/products";
 
+/*Skapar en delay variabel så att använder behöver vänta en halv sekund innan resultat*/
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 function SearchProducts() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  async function handleSearch() {
+  async function handleSearch(e) {
+    e.preventDefault();
     setLoading(true);
     try {
+      await delay(500);
       const data = await fetchProductsByQuery(query.trim().toLowerCase());
       setResults(data);
     } catch (error) {
@@ -19,30 +24,36 @@ function SearchProducts() {
   }
 
   return (
-    <div className="">
-      <input
-        className=""
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Sök t.ex. kött"
-      />
-      <button onClick={handleSearch} className="">
-        Sök
-      </button>
-      {loading && <p>Laddar...</p>}
-      {!loading && results.length === 0 && query !== "" && (
-        <p>Inga produkter matchar din sökning.</p>
-      )}
-      {results.length > 0 && (
-        <ul className="">
-          {results.map((p) => (
-            <li key={p.id}>
-              {p.name} – {p.price} kr/{p.unit}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="form-container">
+      <form onSubmit={handleSearch}>
+        <div className="search-wrapper">
+          <input
+            className=""
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Sök t.ex. kött"
+          />
+
+          <button type="submit" className="button">
+            <span>Sök</span>
+          </button>
+        </div>
+
+        {loading && <p>Laddar...</p>}
+        {results.length > 0 && (
+          <div className="list-wrapper">
+            <ul className="">
+              {results.map((p) => (
+                <li key={p.id}>
+                  {p.name} – {p.price} kr/{p.unit} hos {p.store} tillgängligt
+                  till {p.valid_until}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </form>
     </div>
   );
 }
