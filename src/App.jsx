@@ -1,12 +1,10 @@
-import { useState } from "react";
+import SearchProducts from "./components/searchProducts";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
-        <p>Hello Fnörsk</p>
+        <SearchProducts />
       </div>
     </>
   );
