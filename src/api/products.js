@@ -3,7 +3,9 @@ import { supabase } from "../lib/supabaseClient";
 export async function fetchProductsByQuery(query) {
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, price, unit, store, valid_until")
+    .select(
+      "id, name, price, store, volume, getMorePrice, compareOrdinaryPrice"
+    )
     .ilike("name", `%${query}%`)
     .order("price", { ascending: true });
 

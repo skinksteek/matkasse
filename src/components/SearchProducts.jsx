@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { fetchProductsByQuery } from "../api/products";
 
-/*Skapar en delay variabel så att använder behöver vänta en halv sekund innan resultat*/
+/*Skapar en delay variabel så att användaren behöver vänta en halv sekund innan resultat*/
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function SearchProducts() {
@@ -46,8 +46,8 @@ function SearchProducts() {
             <ul className="">
               {results.map((p) => (
                 <li key={p.id}>
-                  {p.name} – {p.price} kr/{p.unit} hos {p.store} tillgängligt
-                  till {p.valid_until}
+                  {p.name} – {p.price} {p.store} {p.volume} {p.getMorePrice}
+                  {p.compareOrdinaryPrice}
                 </li>
               ))}
             </ul>
