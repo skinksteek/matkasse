@@ -1,0 +1,20 @@
+.grid-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1200px;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  list-style-type: none;
+  margin: 0 auto;
+  .grid-list-item {
+    background-color: var(--turqoiuse);
+    border-radius: 20px;
+    padding: 4vh;
+    p {
+      font-weight: bold;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+}

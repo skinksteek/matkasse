@@ -4,7 +4,7 @@ export async function fetchProductsByQuery(query) {
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, name, price, store, volume, getMorePrice, compareOrdinaryPrice"
+      "id, name, price, store, volume, getMorePrice, compareOrdinaryPrice, imageURL"
     )
     .ilike("name", `%${query}%`)
     .order("price", { ascending: true });

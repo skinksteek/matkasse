@@ -34,26 +34,29 @@ function SearchProducts() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Sök t.ex. kött"
           />
-
           <button type="submit" className="button">
             <span>Sök</span>
           </button>
         </div>
-
-        {loading && <p>Laddar...</p>}
-        {results.length > 0 && (
-          <div className="list-wrapper">
-            <ul className="">
-              {results.map((p) => (
-                <li key={p.id}>
-                  {p.name} – {p.price} {p.store} {p.volume} {p.getMorePrice}
-                  {p.compareOrdinaryPrice}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {loading && <span className="loader"></span>}
       </form>
+
+      {results.length > 0 && (
+        <ul className="grid-list-wrapper">
+          {results.map((p) => (
+            <li className="grid-list-item" key={p.id}>
+              <img className="product-image" src={p.imageURL} alt={p.name} />
+              <h2 className="product-name">{p.name}</h2>
+              <h3 className="product-price">
+                {p.price}kr - {p.volume}
+              </h3>
+              <span>{p.getMorePrice} - </span>
+              <span>{p.compareOrdinaryPrice}</span>
+              <p>{p.store}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
