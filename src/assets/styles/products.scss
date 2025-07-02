@@ -6,9 +6,10 @@
   grid-row-gap: 20px;
   list-style-type: none;
   margin: 0 auto;
+  padding-bottom: 10vh;
   .grid-list-item {
     background-color: var(--blue);
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 4vh;
     p {
       font-weight: bold;
