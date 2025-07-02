@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fetchProductsByQuery } from "../api/products";
 
 /*Skapar en delay variabel så att användaren behöver vänta en halv sekund innan resultat*/
@@ -8,14 +8,39 @@ function SearchProducts() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const limit = 10;
 
-  async function handleSearch(e) {
-    e.preventDefault();
+  useEffect(() => {
+    fetchProductsByQuery(query.trim().toLowerCase(), page, limit)
+      .then(({ data, count }) => {
+        setResults(data);
+        setTotalPages(Math.ceil(count / limit));
+      })
+      .catch((error) => {
+        console.error("Fel vid hämtning:", error.message);
+      });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page, query]);
+
+  const handleNext = () => setPage((prev) => prev + 1);
+  const handlePrev = () => setPage((prev) => Math.max(prev - 1, 1));
+
+  async function handleSearch(e, newPage = 1) {
+    if (e) e.preventDefault();
     setLoading(true);
     try {
       await delay(500);
-      const data = await fetchProductsByQuery(query.trim().toLowerCase());
+      const { data, count } = await fetchProductsByQuery(
+        query.trim().toLowerCase(),
+        newPage,
+        limit
+      );
       setResults(data);
+
+      setPage(newPage);
+      setTotalPages(Math.ceil(count / limit));
     } catch (error) {
       console.error("Fel vid hämtning:", error.message);
     } finally {
@@ -58,6 +83,27 @@ function SearchProducts() {
             </li>
           ))}
         </ul>
+      )}
+      {results.length > 0 && (
+        <div className="pagination">
+          <button
+            className="button-pagination"
+            onClick={() => handlePrev()}
+            disabled={page <= 1}
+          >
+            <span>Föregående</span>
+          </button>
+          <span>
+            Sida {page} av {totalPages}
+          </span>
+          <button
+            className="button-pagination"
+            onClick={() => handleNext()}
+            disabled={page >= totalPages}
+          >
+            <span>Nästa</span>
+          </button>
+        </div>
       )}
     </div>
   );
