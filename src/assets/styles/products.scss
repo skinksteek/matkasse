@@ -7,14 +7,16 @@
   list-style-type: none;
   margin: 0 auto;
   .grid-list-item {
-    background-color: var(--turqoiuse);
+    background-color: var(--blue);
     border-radius: 20px;
     padding: 4vh;
     p {
       font-weight: bold;
     }
     img {
-      max-width: 100%;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
     }
   }
 }

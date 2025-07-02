@@ -45,7 +45,9 @@ function SearchProducts() {
         <ul className="grid-list-wrapper">
           {results.map((p) => (
             <li className="grid-list-item" key={p.id}>
-              <img className="product-image" src={p.imageURL} alt={p.name} />
+              {p.imageURL && (
+                <img className="product-image" src={p.imageURL} alt={p.name} />
+              )}
               <h2 className="product-name">{p.name}</h2>
               <h3 className="product-price">
                 {p.price}kr - {p.volume}
