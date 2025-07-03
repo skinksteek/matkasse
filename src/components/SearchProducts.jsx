@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchProductsByQuery } from "../api/products";
 import { ProductCard } from "./ProductCard";
+import { Pagination } from "./Pagination";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -11,7 +12,7 @@ function SearchProducts() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const limit = 10;
+  const limit = 12;
 
   useEffect(() => {
     fetchAndSetResults(query, page);
@@ -62,6 +63,7 @@ function SearchProducts() {
           {loading && <span className="loader"></span>}
         </div>
       </form>
+
       <ul className="grid-list-wrapper">
         {results.map((p) => (
           <li className="grid-list-item" key={p.id}>
@@ -71,25 +73,12 @@ function SearchProducts() {
       </ul>
 
       {results.length > 0 && (
-        <div className="pagination">
-          <button
-            className="button-pagination"
-            onClick={() => handlePrev()}
-            disabled={page <= 1}
-          >
-            <span>Föregående</span>
-          </button>
-          <span>
-            Sida {page} av {totalPages}
-          </span>
-          <button
-            className="button-pagination"
-            onClick={() => handleNext()}
-            disabled={page >= totalPages}
-          >
-            <span>Nästa</span>
-          </button>
-        </div>
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          handleNext={handleNext}
+          handlePrev={handlePrev}
+        />
       )}
     </div>
   );
