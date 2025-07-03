@@ -1,11 +1,13 @@
-import SearchProducts from "./components/searchProducts";
+import SearchProducts from "./components/SearchProducts";
 
 function App() {
   return (
     <>
       <div>
         <div className="header">
-          <h1>Matkasse</h1>
+          <a href="/">
+            <h1>Matkasse</h1>
+          </a>
         </div>
         <SearchProducts />
       </div>

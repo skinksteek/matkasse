@@ -25,5 +25,9 @@ body {
   .header {
     font-size: 46px;
     text-align: center;
+    a {
+      text-decoration: none;
+      color: var(--white);
+    }
   }
 }
