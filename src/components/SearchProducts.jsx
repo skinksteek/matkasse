@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { fetchProductsByQuery } from "../api/products";
+import { ProductCard } from "./ProductCard";
 
-/*Skapar en delay variabel så att användaren behöver vänta en halv sekund innan resultat*/
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function SearchProducts() {
+  const [inputValue, setInputValue] = useState("");
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,39 +14,35 @@ function SearchProducts() {
   const limit = 10;
 
   useEffect(() => {
-    fetchProductsByQuery(query.trim().toLowerCase(), page, limit)
-      .then(({ data, count }) => {
-        setResults(data);
-        setTotalPages(Math.ceil(count / limit));
-      })
-      .catch((error) => {
-        console.error("Fel vid hämtning:", error.message);
-      });
+    fetchAndSetResults(query, page);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [page, query]);
+  }, [query, page]);
 
   const handleNext = () => setPage((prev) => prev + 1);
   const handlePrev = () => setPage((prev) => Math.max(prev - 1, 1));
 
-  async function handleSearch(e, newPage = 1) {
-    if (e) e.preventDefault();
+  async function fetchAndSetResults(currentQuery, currentPage) {
     setLoading(true);
     try {
       await delay(500);
       const { data, count } = await fetchProductsByQuery(
-        query.trim().toLowerCase(),
-        newPage,
+        currentQuery.trim().toLowerCase(),
+        currentPage,
         limit
       );
       setResults(data);
-
-      setPage(newPage);
       setTotalPages(Math.ceil(count / limit));
     } catch (error) {
       console.error("Fel vid hämtning:", error.message);
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleSearch(e) {
+    e.preventDefault();
+    setPage(1); // useEffect trigger
+    setQuery(inputValue);
   }
 
   return (
@@ -55,35 +52,24 @@ function SearchProducts() {
           <input
             className=""
             type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             placeholder="Sök t.ex. kött"
           />
           <button type="submit" className="button">
             <span>Sök</span>
           </button>
+          {loading && <span className="loader"></span>}
         </div>
-        {loading && <span className="loader"></span>}
       </form>
+      <ul className="grid-list-wrapper">
+        {results.map((p) => (
+          <li className="grid-list-item" key={p.id}>
+            <ProductCard product={p} />
+          </li>
+        ))}
+      </ul>
 
-      {results.length > 0 && (
-        <ul className="grid-list-wrapper">
-          {results.map((p) => (
-            <li className="grid-list-item" key={p.id}>
-              {p.imageURL && (
-                <img className="product-image" src={p.imageURL} alt={p.name} />
-              )}
-              <h2 className="product-name">{p.name}</h2>
-              <h3 className="product-price">
-                {p.price}kr - {p.volume}
-              </h3>
-              <span>{p.getMorePrice} - </span>
-              <span>{p.compareOrdinaryPrice}</span>
-              <p>{p.store}</p>
-            </li>
-          ))}
-        </ul>
-      )}
       {results.length > 0 && (
         <div className="pagination">
           <button
