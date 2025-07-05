@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchProductsByQuery } from "../api/products";
-import { ProductCard } from "./ProductCard";
 import { Pagination } from "./Pagination";
+import { SearchBar } from "./SearchBar";
+import { ProductGrid } from "./ProductGrid";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -48,29 +49,14 @@ function SearchProducts() {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSearch}>
-        <div className="search-wrapper">
-          <input
-            className=""
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Sök t.ex. kött"
-          />
-          <button type="submit" className="button">
-            <span>Sök</span>
-          </button>
-          {loading && <span className="loader"></span>}
-        </div>
-      </form>
+      <SearchBar
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        onSubmit={handleSearch}
+        loading={loading}
+      />
 
-      <ul className="grid-list-wrapper">
-        {results.map((p) => (
-          <li className="grid-list-item" key={p.id}>
-            <ProductCard product={p} />
-          </li>
-        ))}
-      </ul>
+      <ProductGrid results={results} />
 
       {results.length > 0 && (
         <Pagination
