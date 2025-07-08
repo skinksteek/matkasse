@@ -1,0 +1,37 @@
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 0vh 0 4vh 0;
+  .button--sort {
+    color: var(--white);
+    background-color: var(--blue);
+    transition: 0.4s;
+    padding: 1rem 1rem;
+    &::before,
+    &::after {
+      content: none;
+      display: none;
+    }
+    &:hover::before {
+      transform: none;
+    }
+    &:hover span {
+      color: inherit;
+    }
+    &:hover {
+      background-color: var(--turqoiuse);
+      color: var(--black);
+    }
+  }
+  label {
+    padding: 1rem 1rem;
+  }
+
+  div {
+    margin: 0 1vw;
+  }
+  select {
+    margin-left: 1vw;
+  }
+}

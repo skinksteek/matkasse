@@ -3,11 +3,14 @@ import { fetchProductsByQuery } from "../api/products";
 import { Pagination } from "./Pagination";
 import { SearchBar } from "./SearchBar";
 import { ProductGrid } from "./ProductGrid";
+import { FilterControl } from "./FilterControl";
+import { SortControl } from "./SortControl";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function SearchProducts() {
   const [inputValue, setInputValue] = useState("");
+  const [filters, setFilters] = useState({ store: "" });
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -55,6 +58,13 @@ function SearchProducts() {
         onSubmit={handleSearch}
         loading={loading}
       />
+      <div className="filter-controls">
+        <FilterControl filters={filters} setFilters={setFilters} />
+        <SortControl
+          sortOrder={filters.sortOrder}
+          setSortOrder={(sortOrder) => setFilters({ ...filters, sortOrder })}
+        />
+      </div>
 
       <ProductGrid results={results} />
 
