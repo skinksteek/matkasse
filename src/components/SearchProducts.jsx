@@ -60,10 +60,12 @@ function SearchProducts() {
       />
       <div className="filter-controls">
         <FilterControl filters={filters} setFilters={setFilters} />
-        <SortControl
-          sortOrder={filters.sortOrder}
-          setSortOrder={(sortOrder) => setFilters({ ...filters, sortOrder })}
-        />
+        <div className="filter-sort">
+          <SortControl
+            sortOrder={filters.sortOrder}
+            setSortOrder={(sortOrder) => setFilters({ ...filters, sortOrder })}
+          />
+        </div>
       </div>
 
       <ProductGrid results={results} />

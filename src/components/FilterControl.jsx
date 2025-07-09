@@ -7,7 +7,7 @@ export const FilterControl = ({ filters, setFilters }) => {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: "1vw" }}>
       <label>
         Välj butik:
         <select name="store" value={filters.store} onChange={handleChange}>
