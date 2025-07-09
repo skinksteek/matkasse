@@ -7,9 +7,9 @@
   position: relative;
   display: inline-block;
   letter-spacing: 0.05rem;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 17px;
-  border-radius: 500px;
+  border-radius: calc(infinity * 1px);
   overflow: hidden;
   background: var(--turqoiuse);
   background-clip: padding-box;

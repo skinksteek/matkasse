@@ -1,11 +1,12 @@
 .filter-controls {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   padding: 0vh 0 4vh 0;
   .button--sort {
     color: var(--white);
     background-color: var(--blue);
+    font-weight: 400;
     transition: 0.4s;
     padding: 1rem 1rem;
     &::before,
@@ -23,15 +24,31 @@
       background-color: var(--turqoiuse);
       color: var(--black);
     }
+    svg {
+      width: 1em;
+      height: 1em;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      path {
+        fill: var(--white);
+      }
+    }
   }
   label {
-    padding: 1rem 1rem;
-  }
-
-  div {
-    margin: 0 1vw;
+    font-weight: 400;
+    letter-spacing: 0.05rem;
+    font-size: 17px;
   }
   select {
+    border-radius: calc(infinity * 1px);
+    padding: 0.375rem 0.5rem;
     margin-left: 1vw;
+    color: var(--white);
+    background-color: var(--blue);
+    font-size: 17px;
+  }
+  .filter-sort {
+    display: flex;
+    flex-direction: row;
   }
 }
