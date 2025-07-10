@@ -6,10 +6,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --white: #ececec;
-  --turqoiuse: #9fd3c7;
-  --blue: #385170;
-  --darkblue: #142d4c;
+  --white: #ffffff;
+  --lightgreen: #7d9e96;
+  --darkgreen: #48514d;
+  --main-color: #655f59;
   --black: #000000;
 }
 * {
@@ -20,15 +20,33 @@
 
 body {
   margin: 0 auto;
-  background-color: var(--darkblue);
+  background-color: var(--main-color);
   color: var(--white);
 
   .header {
-    font-size: 46px;
+    padding-top: 2vh;
     text-align: center;
-    a {
-      text-decoration: none;
-      color: var(--white);
+    .logo:hover {
+      animation: glitch 0.3s ease-out infinite;
+      & {
+        @keyframes glitch {
+          0% {
+            transform: translate(2px, 2px);
+          }
+          25% {
+            transform: translate(-2px, -2px);
+          }
+          50% {
+            transform: translate(-2px, 2px);
+          }
+          75% {
+            transform: translate(2px, -2px);
+          }
+          100% {
+            transform: translate(2px, 2px);
+          }
+        }
+      }
     }
   }
 }

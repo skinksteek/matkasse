@@ -8,9 +8,10 @@
   margin: 0 auto;
   padding-bottom: 10vh;
   padding-left: 0;
+  color: var(--main-color);
   .grid-list-item {
-    background-color: var(--blue);
-    border-radius: 10px;
+    background-color: var(--white);
+    border-radius: 12% 12% 12% 12% / 10% 10% 10% 10%;
     padding: 4vh;
     p {
       font-weight: bold;

@@ -5,7 +5,7 @@
   padding: 0vh 0 4vh 0;
   .button--sort {
     color: var(--white);
-    background-color: var(--blue);
+    background-color: var(--darkgreen);
     font-weight: 400;
     transition: 0.4s;
     padding: 1rem 1rem;
@@ -21,14 +21,18 @@
       color: inherit;
     }
     &:hover {
-      background-color: var(--turqoiuse);
+      background-color: var(--lightgreen);
       color: var(--black);
+      svg path {
+        fill: var(--black);
+      }
     }
     svg {
       width: 1em;
       height: 1em;
       margin-right: 0.5rem;
       vertical-align: middle;
+
       path {
         fill: var(--white);
       }
@@ -44,7 +48,7 @@
     padding: 0.375rem 0.5rem;
     margin-left: 1vw;
     color: var(--white);
-    background-color: var(--blue);
+    background-color: var(--darkgreen);
     font-size: 17px;
   }
   .filter-sort {
