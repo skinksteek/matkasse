@@ -48,4 +48,25 @@
       transform: rotate(360deg);
     }
   }
+  .filter-results {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    animation: resultAnimation 0.6s ease-out;
+
+    @keyframes resultAnimation {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
 }

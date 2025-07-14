@@ -9,6 +9,13 @@
     font-weight: 400;
     transition: 0.4s;
     padding: 1rem 1rem;
+    &.active {
+      background-color: var(--lightgreen);
+      color: var(--black);
+      svg path {
+        fill: var(--black);
+      }
+    }
     &::before,
     &::after {
       content: none;
