@@ -1,22 +1,41 @@
 import { supabase } from "../lib/supabaseClient";
 
-export async function fetchProductsByQuery(query, page = 1, limit = 10) {
+export async function fetchProductsByQuery(
+  query,
+  page = 1,
+  limit = 10,
+  store = "",
+  sortOrder = ""
+) {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
-  const { data, error, count } = await supabase
+
+  let queryBuilder = supabase
     .from("products")
     .select(
       "id, name, price, store, volume, getMorePrice, compareOrdinaryPrice, imageURL",
       { count: "exact" }
-    )
-    .ilike("name", `%${query}%`)
-    .order("price", { ascending: true })
-    .range(from, to);
+    );
+  if (query) {
+    queryBuilder = queryBuilder.ilike("name", `%${query}%`);
+  }
 
-  console.log("Sökord skickat till Supabase:", query);
-  console.log(`Söker på: %${query}%`);
-  console.log("Data från Supabase:", data);
+  if (store) {
+    queryBuilder = queryBuilder.eq("store", store);
+  }
+  if (sortOrder === "lowToHigh") {
+    queryBuilder = queryBuilder.order("price", { ascending: true });
+  } else if (sortOrder === "highToLow") {
+    queryBuilder = queryBuilder.order("price", { ascending: false });
+  } else {
+    queryBuilder = queryBuilder.order("name", { ascending: true });
+  }
 
+  queryBuilder = queryBuilder.range(from, to);
+
+  const { data, error, count } = await queryBuilder;
+
+  console.log("Sökning:", { query, store, sortOrder, page });
   if (error) {
     console.error("Supabase error:", error.message);
     throw new Error(error.message);
