@@ -1,3 +1,5 @@
+@use "./tools/media.scss";
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -11,6 +13,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 3vh;
+    padding-top: 5vh;
     input {
       border: 0;
       border-bottom: 2px solid var(--white);
@@ -68,5 +71,11 @@
         transform: scale(1);
       }
     }
+  }
+}
+@include media.respond(xl) {
+  .form-container {
+    padding-right: 5vh;
+    padding-left: 5vh;
   }
 }

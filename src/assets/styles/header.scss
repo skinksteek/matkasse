@@ -1,0 +1,36 @@
+@use "./tools/media.scss";
+
+@keyframes glitch {
+  0% {
+    transform: translate(2px, 2px);
+  }
+  25% {
+    transform: translate(-2px, -2px);
+  }
+  50% {
+    transform: translate(-2px, 2px);
+  }
+  75% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(2px, 2px);
+  }
+}
+
+.header {
+  max-width: 100%;
+  padding-top: 2vh;
+  text-align: center;
+  .logo {
+    @include media.respond(lg) {
+      width: 70%;
+    }
+    @include media.respond(md) {
+      width: 65%;
+    }
+  }
+  &:hover {
+    animation: glitch 0.3s ease-out infinite;
+  }
+}

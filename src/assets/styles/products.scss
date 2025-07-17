@@ -1,3 +1,5 @@
+@use "./tools/media.scss";
+
 .grid-list-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -9,17 +11,47 @@
   padding-bottom: 10vh;
   padding-left: 0;
   color: var(--main-color);
+  @include media.respond(md) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
   .grid-list-item {
+    display: flex;
+    flex-direction: column;
     background-color: var(--white);
-    border-radius: 12% 12% 12% 12% / 10% 10% 10% 10%;
+    border-radius: 5px;
     padding: 4vh;
-    p {
+
+    @include media.respond(md) {
+      padding: 2vh;
+      h2 {
+        font-size: 1.2rem;
+      }
+      h3 {
+        font-size: 1em;
+      }
+    }
+    .product-store {
+      margin-top: auto;
       font-weight: bold;
+      &.hemköp {
+        color: #cf1b2c;
+      }
+      &.citygross {
+        color: #0b71bb;
+      }
+    }
+    .product-price-comparison {
+      margin-bottom: 2vh;
     }
     img {
-      width: 200px;
+      width: 100%;
       height: 200px;
       object-fit: contain;
+      @include media.respond(md) {
+        height: auto;
+      }
     }
   }
 }

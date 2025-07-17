@@ -3,6 +3,8 @@
 @use "./products.scss";
 @use "./pagination.scss";
 @use "./filtercontrol.scss";
+@use "./tools/media.scss";
+@use "./header.scss";
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
@@ -18,35 +20,13 @@
   font-style: normal;
 }
 
+html,
 body {
-  margin: 0 auto;
   background-color: var(--main-color);
   color: var(--white);
-
-  .header {
-    padding-top: 2vh;
-    text-align: center;
-    .logo:hover {
-      animation: glitch 0.3s ease-out infinite;
-      & {
-        @keyframes glitch {
-          0% {
-            transform: translate(2px, 2px);
-          }
-          25% {
-            transform: translate(-2px, -2px);
-          }
-          50% {
-            transform: translate(-2px, 2px);
-          }
-          75% {
-            transform: translate(2px, -2px);
-          }
-          100% {
-            transform: translate(2px, 2px);
-          }
-        }
-      }
-    }
-  }
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 }
