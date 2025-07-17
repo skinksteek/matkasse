@@ -1,4 +1,5 @@
 export const ProductCard = ({ product }) => {
+  const storeClass = product.store.toLowerCase().replace(/\s+/g, "-");
   return (
     <>
       {product.imageURL && (
@@ -12,9 +13,12 @@ export const ProductCard = ({ product }) => {
       <h3 className="product-price">
         {product.price}kr - {product.volume}
       </h3>
-      <span>{product.getMorePrice} - </span>
-      <span>{product.compareOrdinaryPrice}</span>
-      <p>{product.store}</p>
+      <div className="product-price-comparison">
+        <span>{product.getMorePrice} - </span>
+        <span>{product.compareOrdinaryPrice}</span>
+      </div>
+
+      <footer className={`product-store ${storeClass}`}>{product.store}</footer>
     </>
   );
 };
