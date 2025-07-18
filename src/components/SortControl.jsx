@@ -5,7 +5,9 @@ export const SortControl = ({ sortOrder, setSortOrder }) => (
         className={`button button--sort ${
           sortOrder === "lowToHigh" ? "active" : ""
         }`}
-        onClick={() => setSortOrder("lowToHigh")}
+        onClick={() =>
+          setSortOrder(sortOrder === "lowToHigh" ? "" : "lowToHigh")
+        }
         type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -19,7 +21,9 @@ export const SortControl = ({ sortOrder, setSortOrder }) => (
         className={`button button--sort ${
           sortOrder === "highToLow" ? "active" : ""
         }`}
-        onClick={() => setSortOrder("highToLow")}
+        onClick={() =>
+          setSortOrder(sortOrder === "highToLow" ? "" : "highToLow")
+        }
         type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
