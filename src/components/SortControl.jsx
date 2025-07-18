@@ -1,6 +1,6 @@
 export const SortControl = ({ sortOrder, setSortOrder }) => (
   <>
-    <div style={{ marginright: ".5vw" }}>
+    <div className="button-down">
       <button
         className={`button button--sort ${
           sortOrder === "lowToHigh" ? "active" : ""
@@ -8,23 +8,13 @@ export const SortControl = ({ sortOrder, setSortOrder }) => (
         onClick={() => setSortOrder("lowToHigh")}
         type="button"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xml:space="preserve"
-          id="chevron-down"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          version="1.1"
-          viewBox="0 0 512 512"
-        >
-          <path d="M256 298.3l174.2-167.2c4.3-4.2 11.4-4.1 15.8.2l30.6 29.9c4.4 4.3 4.5 11.3.2 15.5L264.1 380.9c-2.2 2.2-5.2 3.2-8.1 3-3 .1-5.9-.9-8.1-3L35.2 176.7c-4.3-4.2-4.2-11.2.2-15.5L66 131.3c4.4-4.3 11.5-4.4 15.8-.2L256 298.3z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
         </svg>
-        Lägst pris
+        <span>Lägst pris</span>
       </button>
     </div>
-    <div style={{ marginLeft: ".5vw" }}>
+    <div className="button-up">
       <button
         className={`button button--sort ${
           sortOrder === "highToLow" ? "active" : ""
@@ -32,20 +22,10 @@ export const SortControl = ({ sortOrder, setSortOrder }) => (
         onClick={() => setSortOrder("highToLow")}
         type="button"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xml:space="preserve"
-          id="chevron-up"
-          width="512"
-          height="512"
-          x="0"
-          y="0"
-          version="1.1"
-          viewBox="0 0 512 512"
-        >
-          <path d="M256 213.7l174.2 167.2c4.3 4.2 11.4 4.1 15.8-.2l30.6-29.9c4.4-4.3 4.5-11.3.2-15.5L264.1 131.1c-2.2-2.2-5.2-3.2-8.1-3-3-.1-5.9.9-8.1 3L35.2 335.3c-4.3 4.2-4.2 11.2.2 15.5L66 380.7c4.4 4.3 11.5 4.4 15.8.2L256 213.7z"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
         </svg>
-        Högst pris
+        <span>Högst pris</span>
       </button>
     </div>
   </>

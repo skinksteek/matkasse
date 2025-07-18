@@ -7,15 +7,20 @@ export const FilterControl = ({ filters, setFilters }) => {
   };
 
   return (
-    <div style={{ paddingTop: "1vw" }}>
-      <label>
+    <div className="filter-wrapper">
+      <label htmlFor="store" className="hide-xs">
         Välj butik:
-        <select name="store" value={filters.store} onChange={handleChange}>
-          <option value="">Alla</option>
-          <option value="Hemköp">Hemköp</option>
-          <option value="CityGross">CityGross</option>
-        </select>
       </label>
+      <select
+        id="store"
+        name="store"
+        value={filters.store}
+        onChange={handleChange}
+      >
+        <option value="">Alla</option>
+        <option value="Hemköp">Hemköp</option>
+        <option value="CityGross">CityGross</option>
+      </select>
     </div>
   );
 };
