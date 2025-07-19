@@ -60,7 +60,9 @@
       }
     }
     .product-price-comparison {
-      margin-bottom: 2vh;
+      p {
+        margin: 0;
+      }
     }
     img {
       width: 100%;
