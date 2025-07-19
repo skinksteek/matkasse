@@ -10,12 +10,11 @@ export async function fetchProductsByQuery(
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
-  let queryBuilder = supabase
-    .from("products")
-    .select(
-      "id, name, price, store, volume, getMorePrice, compareOrdinaryPrice, imageURL",
-      { count: "exact" }
-    );
+  let queryBuilder = supabase.from("products").select(
+    "id, name, price, volume, store, compareOrdinaryPrice, getMorePrice, priceMultipleItems, imageURL",
+
+    { count: "exact" }
+  );
   if (query) {
     queryBuilder = queryBuilder.ilike("name", `%${query}%`);
   }
