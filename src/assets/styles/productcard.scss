@@ -1,0 +1,55 @@
+@use "./tools/media.scss";
+
+.product-card {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 100%;
+  .product-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+  }
+  .product-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .product-price-volume {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    .product-price {
+      font-weight: bold;
+    }
+  }
+  .product-offer {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+    border-radius: 8px;
+  }
+
+  @include media.respond(md) {
+    padding: 2vh;
+    .product-img {
+      height: 100px;
+    }
+  }
+  @include media.respond(xs) {
+    padding: 1vh;
+  }
+  .product-store {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 600;
+    &.hemköp {
+      color: #cf1b2c;
+    }
+    &.citygross {
+      color: #0b71bb;
+    }
+  }
+}
