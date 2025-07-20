@@ -27,5 +27,8 @@
     background-color: var(--white);
     border-radius: 5px;
     padding: 4vh;
+    @include media.respond(md) {
+      padding: 0;
+    }
   }
 }
