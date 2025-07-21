@@ -12,7 +12,7 @@
   padding-left: 0;
   color: var(--main-color);
   @include media.respond(md) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
   }
