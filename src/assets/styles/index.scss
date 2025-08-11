@@ -23,7 +23,21 @@
 
 html,
 body {
-  background-color: var(--main-color);
+  background-image: linear-gradient(
+    to left top,
+    #7d9e96,
+    #738f87,
+    #698079,
+    #5f716b,
+    #55635e,
+    #535e59,
+    #515a54,
+    #4f554f,
+    #555851,
+    #5a5a53,
+    #605d56,
+    #655f59
+  );
   color: var(--white);
   margin: 0;
   padding: 0;

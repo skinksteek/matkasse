@@ -1,5 +1,5 @@
 import SearchProducts from "./components/SearchProducts";
-import logo from "./assets/images/Matkasselogo.png";
+import logo from "./assets/images/logo-transparent.png";
 
 function App() {
   return (

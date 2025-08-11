@@ -11,27 +11,28 @@ export const ProductCard = ({ product }) => {
             alt={product.name}
           />
         )}
+        <article className="product-information">
+          <h2 className="product-name">{product.name}</h2>
 
-        <h2 className="product-name">{product.name}</h2>
-
-        <div className="product-price-volume">
-          <p className="product-price">
-            {product.priceMultipleItems && `${product.priceMultipleItems} `}
-            {product.price}
-          </p>
-          <p className="product-volume">{product.volume}</p>
-        </div>
-        <div className="product-offer">
-          <p>{product.getMorePrice}</p>
-          <p>
-            {product.compareOrdinaryPrice.split("\n").map((line, index) => (
-              <span key={index}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </p>
-        </div>
+          <div className="product-price-volume">
+            <p className="product-price">
+              {product.priceMultipleItems && `${product.priceMultipleItems} `}
+              {product.price}
+            </p>
+            <p className="product-volume">{product.volume}</p>
+          </div>
+          <div className="product-offer">
+            <p>{product.getMorePrice}</p>
+            <p>
+              {product.compareOrdinaryPrice.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>
+              ))}
+            </p>
+          </div>
+        </article>
         <footer className={`product-store ${storeClass}`}>
           {product.store}
         </footer>
