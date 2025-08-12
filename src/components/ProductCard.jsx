@@ -8,10 +8,10 @@ export const ProductCard = ({ product }) => {
           <img
             className="product-image"
             src={product.imageURL}
-            alt={product.name}
+            alt={`Bild på ${product.name}`}
           />
         )}
-        <article className="product-information">
+        <div className="product-information">
           <h2 className="product-name">{product.name}</h2>
 
           <div className="product-price-volume">
@@ -32,7 +32,7 @@ export const ProductCard = ({ product }) => {
               ))}
             </p>
           </div>
-        </article>
+        </div>
         <footer className={`product-store ${storeClass}`}>
           {product.store}
         </footer>

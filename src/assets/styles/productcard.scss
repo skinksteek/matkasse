@@ -2,22 +2,22 @@
 
 .product-card {
   display: grid;
-  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
   padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   text-align: center;
   height: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  }
+
   .product-image {
     width: 100%;
     max-height: 200px;
     object-fit: contain;
   }
+  .product-information {
+    align-self: start;
+  }
+
   .product-name {
     font-size: 1.1rem;
     font-weight: 600;
