@@ -11,7 +11,7 @@ export const ProductCard = ({ product }) => {
             alt={`Bild på ${product.name}`}
           />
         )}
-        <div className="product-information">
+        <section className="product-information">
           <h2 className="product-name">{product.name}</h2>
 
           <div className="product-price-volume">
@@ -24,15 +24,18 @@ export const ProductCard = ({ product }) => {
           <div className="product-offer">
             <p>{product.getMorePrice}</p>
             <p>
-              {product.compareOrdinaryPrice.split("\n").map((line, index) => (
-                <span key={index}>
-                  {line}
-                  <br />
-                </span>
-              ))}
+              {product.compareOrdinaryPrice
+                .replace(/st(?!\s)/g, "st ")
+                .split("\n")
+                .map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
             </p>
           </div>
-        </div>
+        </section>
         <footer className={`product-store ${storeClass}`}>
           {product.store}
         </footer>
