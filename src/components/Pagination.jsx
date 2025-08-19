@@ -1,6 +1,6 @@
 export const Pagination = ({ page, totalPages, handleNext, handlePrev }) => {
   return (
-    <div className="pagination">
+    <nav className="pagination">
       <button
         className="button-pagination"
         onClick={() => {
@@ -10,7 +10,7 @@ export const Pagination = ({ page, totalPages, handleNext, handlePrev }) => {
       >
         <span>Föregående</span>
       </button>
-      <span>
+      <span className="page">
         {page} av {totalPages}
       </span>
       <button
@@ -22,6 +22,6 @@ export const Pagination = ({ page, totalPages, handleNext, handlePrev }) => {
       >
         <span>Nästa</span>
       </button>
-    </div>
+    </nav>
   );
 };

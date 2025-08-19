@@ -1,9 +1,15 @@
 @use "./tools/media.scss";
 .pagination {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  margin: 5vh 0 10vh 0;
+  gap: 12px;
+  width: min(100%, 420px);
+  margin: 24px auto 34px;
+  @include media.respond(xs) {
+    grid-template-columns: 1fr 1fr;
+  }
+
   span {
     margin: 0 10px;
     font-size: 1.2rem;
@@ -44,6 +50,12 @@
     &:disabled {
       opacity: 0.5;
       pointer-events: none;
+    }
+  }
+  .page {
+    @include media.respond(xs) {
+      grid-column: 1 / -1;
+      order: -1;
     }
   }
 }
