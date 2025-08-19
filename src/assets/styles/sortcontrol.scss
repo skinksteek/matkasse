@@ -1,0 +1,82 @@
+@use "./tools/media.scss";
+
+.button--sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 15px;
+  padding: 1rem;
+  white-space: nowrap;
+
+  color: var(--white);
+  background-color: var(--darkgreen);
+  font-weight: 400;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--lightgreen);
+    outline-offset: 2px;
+  }
+
+  .sort-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    transform-origin: 50% 50%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.6;
+    color: currentColor;
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  &.active,
+  &:hover {
+    background-color: var(--lightgreen);
+    color: var(--black);
+    .sort-icon {
+      opacity: 1;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: none;
+    display: none;
+  }
+
+  @include media.respond(sm) {
+    padding: 0.75rem;
+    span {
+      display: none;
+    }
+  }
+
+  /* Rotation per läge */
+  .sort-icon {
+    transform: rotate(0deg);
+  } // default
+
+  &[data-order="none"] .sort-icon {
+    opacity: 0.6;
+  } // ingen sortering
+  &[data-order="lowToHigh"] .sort-icon {
+    opacity: 1;
+  } // pil ned
+  &[data-order="highToLow"] .sort-icon {
+    transform: rotate(180deg);
+    opacity: 1;
+  } // pil upp
+}
+
+/* Respektera användare som vill minska rörelse (???)*/
+@media (prefers-reduced-motion: reduce) {
+  .button--sort,
+  .button--sort .sort-icon {
+    transition: none;
+  }
+}
