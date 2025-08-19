@@ -3,17 +3,21 @@ export const Pagination = ({ page, totalPages, handleNext, handlePrev }) => {
     <div className="pagination">
       <button
         className="button-pagination"
-        onClick={() => handlePrev()}
+        onClick={() => {
+          handlePrev();
+        }}
         disabled={page <= 1}
       >
         <span>Föregående</span>
       </button>
       <span>
-        Sida {page} av {totalPages}
+        {page} av {totalPages}
       </span>
       <button
         className="button-pagination"
-        onClick={() => handleNext()}
+        onClick={() => {
+          handleNext();
+        }}
         disabled={page >= totalPages}
       >
         <span>Nästa</span>

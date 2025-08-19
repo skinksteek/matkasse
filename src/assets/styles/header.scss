@@ -1,27 +1,10 @@
 @use "./tools/media.scss";
 
-@keyframes glitch {
-  0% {
-    transform: translate(2px, 2px);
-  }
-  25% {
-    transform: translate(-2px, -2px);
-  }
-  50% {
-    transform: translate(-2px, 2px);
-  }
-  75% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(2px, 2px);
-  }
-}
-
 .header {
   max-width: 100%;
   padding-top: 2vh;
   text-align: center;
+  transition: all 0.2s ease-in-out;
   .logo {
     object-fit: contain;
     max-height: 100%;
@@ -37,6 +20,6 @@
     }
   }
   &:hover {
-    animation: glitch 0.3s ease-out infinite;
+    transform: scale(1.03);
   }
 }

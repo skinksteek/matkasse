@@ -6,7 +6,7 @@ export const SearchBar = ({ inputValue, setInputValue, onSubmit, loading }) => {
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Sök t.ex. kött"
+          placeholder="Sök t.ex. energidryck"
         />
         <button type="submit" className="button">
           <span>Sök</span>

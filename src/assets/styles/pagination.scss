@@ -1,3 +1,4 @@
+@use "./tools/media.scss";
 .pagination {
   display: flex;
   justify-content: center;
@@ -7,6 +8,10 @@
     margin: 0 10px;
     font-size: 1.2rem;
     color: var(--white);
+    text-align: center;
+    @include media.respond(sm) {
+      font-size: 16px;
+    }
   }
   .button-pagination {
     background-color: var(--darkgreen);
@@ -27,9 +32,18 @@
         color: var(--black);
       }
     }
+    @include media.respond(xs) {
+      padding: 10px 10px;
+    }
+    span {
+      @include media.respond(sm) {
+        font-size: 16px;
+      }
+    }
 
     &:disabled {
-      display: none;
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }

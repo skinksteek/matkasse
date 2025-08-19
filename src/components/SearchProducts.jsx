@@ -27,7 +27,6 @@ function SearchProducts() {
   // Hämta produkter när query, page eller filters ändras
   useEffect(() => {
     fetchAndSetResults(query, page, filters);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [query, page, filters]);
 
   // Funktionen för att hämta produkter
@@ -42,6 +41,7 @@ function SearchProducts() {
         currentFilters.store,
         currentFilters.sortOrder
       );
+
       setResults(data);
       setTotalPages(Math.ceil(count / limit));
     } catch (error) {
