@@ -8,10 +8,13 @@ export const SearchBar = ({ inputValue, setInputValue, onSubmit, loading }) => {
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Sök t.ex. energidryck"
         />
-        <button type="submit" className="button">
+        <button
+          type="submit"
+          className={`button ${loading ? "is-loading" : ""}`}
+          disabled={loading}
+        >
           <span>Sök</span>
         </button>
-        {loading && <span className="loader"></span>}
       </div>
     </form>
   );
