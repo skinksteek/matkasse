@@ -29,10 +29,10 @@
       border: 1px solid transparent;
       appearance: none;
       -webkit-appearance: none;
-
       transition: background-color 0.2s ease, color 0.2s ease,
         border-color 0.2s ease;
-
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
       &:focus-visible {
         outline: 2px solid var(--lightgreen);
         outline-offset: 2px;
