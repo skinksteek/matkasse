@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <div className="header">
-        <a href="/">
+        <a href="linusigelstrom.se/matkasse">
           <img className="logo" src={logo} alt="Matkasse Logo" />
         </a>
       </div>
