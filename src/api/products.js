@@ -11,7 +11,7 @@ export async function fetchProductsByQuery(
   const to = from + limit - 1;
 
   let queryBuilder = supabase.from("products").select(
-    "id, name, price, volume, store, compareOrdinaryPrice, getMorePrice, priceMultipleItems, imageURL",
+    "id, name, price, volume, store, compareOrdinaryPrice, getMorePrice, priceMultipleItems, imageURL, productURL",
 
     { count: "exact" }
   );
