@@ -6,7 +6,7 @@
   gap: 12px;
   width: min(100%, 420px);
   margin: 24px auto 34px;
-  @include media.respond(xs) {
+  @include media.respond(sm) {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -53,7 +53,7 @@
     }
   }
   .page {
-    @include media.respond(xs) {
+    @include media.respond(sm) {
       grid-column: 1 / -1;
       order: -1;
     }
