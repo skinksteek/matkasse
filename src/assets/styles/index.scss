@@ -56,28 +56,8 @@ body {
     height: auto;
     display: block;
   }
-
-  input,
-  textarea,
-  select {
-    font-size: 16px;
-  }
-
-  /* Flex-barn tvingar ibland radens bredd – nollställ */
-  .flex > *,
-  [class*="flex"] > * {
-    min-width: 0;
-  }
-
   main,
   #root {
     min-height: 100dvh;
-  }
-  @media (max-width: 768px) {
-    input,
-    textarea,
-    select {
-      font-size: 16px; // förhindra iOS auto-zoom
-    }
   }
 }
