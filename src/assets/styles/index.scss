@@ -49,15 +49,4 @@ body {
   -webkit-text-size-adjust: 100%;
   word-break: break-word;
   overflow-wrap: anywhere;
-
-  /* Globala stylings för att det ska bra ut på en mobil */
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  main,
-  #root {
-    min-height: 100dvh;
-  }
 }
