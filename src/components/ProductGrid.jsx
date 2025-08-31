@@ -10,12 +10,15 @@ export const ProductGrid = ({ results, hasSearched }) => {
   }
 
   return (
-    <ul className="grid-list-wrapper">
-      {results.map((p) => (
-        <li className="grid-list-item" key={p.id}>
-          <ProductCard product={p} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <div className="list-top-anchor" />
+      <ul className="grid-list-wrapper">
+        {results.map((p) => (
+          <li className="grid-list-item" key={p.id}>
+            <ProductCard product={p} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
