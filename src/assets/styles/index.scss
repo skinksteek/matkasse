@@ -73,27 +73,6 @@ body {
   #root {
     min-height: 100dvh;
   }
-
-  /* ===== Din sök-rad (du har .search-wrapper redan) */
-  .search-wrapper {
-    display: grid;
-    grid-template-columns: 1fr auto; /* input tar plats, knapp håller sig */
-    gap: 0.5rem;
-    align-items: center;
-    max-width: 100%;
-  }
-  .search-wrapper input {
-    width: 100%;
-  }
-  .search-wrapper .button {
-    white-space: nowrap;
-  }
-  /* Generella containers */
-  .App,
-  .grid-list-wrapper {
-    width: 100%;
-    max-width: 100%;
-  }
   @media (max-width: 768px) {
     input,
     textarea,

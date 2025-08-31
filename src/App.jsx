@@ -1,7 +1,9 @@
 import SearchProducts from "./components/SearchProducts";
 import logo from "./assets/images/logo-transparent.png";
+import useMobileZoomGuard from "./hooks/useMobileZoomGuard";
 
 function App() {
+  useMobileZoomGuard();
   return (
     <div>
       <div className="header">
