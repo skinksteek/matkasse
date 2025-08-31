@@ -4,12 +4,13 @@ export const SearchBar = ({ inputValue, setInputValue, onSubmit, loading }) => {
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // hindra page reload
-    onSubmit(e); // kör din submit-funktion
-    inputRef.current?.blur(); // stäng tangentbordet
-    if (document.activeElement) {
-      document.activeElement.blur();
-    }
+    e.preventDefault();
+    onSubmit(e);
+    inputRef.current?.blur();
+    if (document.activeElement) document.activeElement.blur();
+    setTimeout(() => {
+      window.scrollTo({ top: window.scrollY });
+    }, 0);
   };
 
   return (
