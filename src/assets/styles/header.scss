@@ -1,22 +1,21 @@
 @use "./tools/media.scss";
 
 .header {
-  max-width: 100%;
-  padding-top: 2vh;
-  text-align: center;
+  padding-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease-in-out;
   .logo {
+    margin: 0 auto;
     object-fit: contain;
     max-height: 100%;
     height: 450px;
-    @include media.respond(lg) {
-      width: 70%;
-    }
-    @include media.respond(md) {
-      width: 65%;
-    }
+    width: 100%;
     @include media.respond(sm) {
       height: auto;
+      padding-right: 3vh;
+      padding-left: 3vh;
     }
   }
   &:hover {
