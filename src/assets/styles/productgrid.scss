@@ -1,20 +1,23 @@
 @use "./tools/media.scss";
+.grid-content {
+  padding-right: 5vh;
+  padding-left: 5vh;
+  .grid-list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 10vh;
 
-.grid-list-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 18px;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 0 10vh;
+    @include media.respond(md) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
 
-  @include media.respond(md) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-  }
-
-  .grid-list-item {
-    list-style: none;
+    .grid-list-item {
+      list-style: none;
+    }
   }
 }

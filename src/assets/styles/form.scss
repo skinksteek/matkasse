@@ -33,36 +33,88 @@
       &::placeholder {
         color: var(--white);
       }
+      @include media.respond(xs) {
+        min-width: 185px;
+      }
     }
+
     button {
       background-color: var(--darkgreen);
+      color: var(--white);
       position: relative;
       min-width: 96px;
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.5rem;
       font-weight: 400;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
         rgba(0, 0, 0, 0.23) 0px 3px 6px;
-      &.is-loading span {
-        visibility: hidden;
+
+      /* smidig rörelse och färgbyte */
+      transition: background-color 0.2s ease, color 0.2s ease,
+        transform 0.12s ease, box-shadow 0.2s ease;
+
+      /* HOVER: lightgreen + svart text/ikon + liten lyftning */
+      &:hover:not(:disabled):not(.is-loading) {
+        background-color: var(--lightgreen);
+        color: #000; /* gör text/ikon svarta */
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: rgba(0, 0, 0, 0.22) 0px 6px 12px,
+          rgba(0, 0, 0, 0.18) 0px 3px 6px;
       }
 
+      /* ACTIVE: tillbaka lite */
+      &:active:not(:disabled):not(.is-loading) {
+        transform: translateY(0) scale(0.99);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      }
+
+      /* FOCUS-ring */
+      &:focus-visible {
+        outline: 2px solid color-mix(in srgb, #fff 70%, var(--darkgreen) 30%);
+        outline-offset: 2px;
+      }
+
+      /* Innehållet i knappen */
+      .btn-text {
+        display: inline;
+      }
+      .btn-icon {
+        display: none;
+        width: 20px;
+        height: 20px;
+        flex: 0 0 auto;
+        /* gör att ikonen följer textfärgen (blir svart på hover) */
+        fill: currentColor;
+        stroke: currentColor;
+      }
+
+      /* Loading: frys effekter och visa spinner */
+      &.is-loading > * {
+        visibility: hidden;
+      }
+      &.is-loading,
+      &.is-loading:hover {
+        background-color: var(--darkgreen);
+        color: var(--white);
+        transform: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+          rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      }
       &.is-loading::after {
         content: "";
         position: absolute;
-
-        /* centrering */
         inset: 0;
         margin: auto;
         width: 18px;
         height: 18px;
-
-        /* ringens tjocklek */
         padding: 3px;
         border-radius: 50%;
-
-        /* spinner-stilen */
         background: var(--lightgreen);
         --_m: conic-gradient(#0000 10%, #000),
           linear-gradient(#000 0 0) content-box;
@@ -73,32 +125,38 @@
         animation: l3 1s linear infinite;
         z-index: 1;
       }
+      @include media.respond(xs) {
+        min-width: 65px;
+      }
+    }
+
+    .filter-results {
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    @include media.respond(sm) {
+      justify-content: space-between;
+    }
+    @include media.respond(xl) {
+      padding-right: 5vh;
+      padding-left: 5vh;
     }
   }
 
-  .filter-results {
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  @keyframes l3 {
+    to {
+      transform: rotate(1turn);
+    }
   }
-  @include media.respond(xl) {
-    padding-right: 5vh;
-    padding-left: 5vh;
-  }
-}
 
-@keyframes l3 {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }

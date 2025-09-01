@@ -62,30 +62,34 @@ function SearchProducts() {
   const handlePrev = () => setPage((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="form-container">
-      <SearchBar
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        onSubmit={handleSearch}
-        loading={loading}
-      />
+    <>
+      <div className="form-container">
+        <SearchBar
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onSubmit={handleSearch}
+          loading={loading}
+        />
 
-      <div className="filter-controls">
-        <FilterControl filters={filters} setFilters={setFilters} />
-        <div className="filter-sort">
-          <SortControl
-            sortOrder={filters.sortOrder}
-            setSortOrder={(sortOrder) => setFilters({ ...filters, sortOrder })}
-          />
+        <div className="filter-controls">
+          <FilterControl filters={filters} setFilters={setFilters} />
+          <div className="filter-sort">
+            <SortControl
+              sortOrder={filters.sortOrder}
+              setSortOrder={(sortOrder) =>
+                setFilters({ ...filters, sortOrder })
+              }
+            />
+          </div>
         </div>
       </div>
-
-      <ProductGrid
-        results={results}
-        loading={loading}
-        hasSearched={hasSearched}
-      />
-
+      <div className="grid-content">
+        <ProductGrid
+          results={results}
+          loading={loading}
+          hasSearched={hasSearched}
+        />
+      </div>
       {results.length > 0 && (
         <Pagination
           page={page}
@@ -94,7 +98,7 @@ function SearchProducts() {
           handlePrev={handlePrev}
         />
       )}
-    </div>
+    </>
   );
 }
 

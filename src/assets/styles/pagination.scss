@@ -7,6 +7,8 @@
   width: min(100%, 420px);
   margin: 24px auto 34px;
   @include media.respond(sm) {
+    padding-left: 5vh;
+    padding-right: 5vh;
     grid-template-columns: 1fr 1fr;
   }
 

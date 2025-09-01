@@ -45,6 +45,10 @@
       }
     }
   }
+  @include media.respond(lg) {
+    padding-right: 5vh;
+    padding-left: 5vh;
+  }
 }
 
 .hide-xs {
