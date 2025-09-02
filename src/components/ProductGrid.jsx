@@ -1,10 +1,21 @@
 import { ProductCard } from "./ProductCard";
+import { useState, useEffect } from "react";
 
-export const ProductGrid = ({ results, hasSearched }) => {
+export const ProductGrid = ({ results, hasSearched, query }) => {
+  const [errorKey, setErrorKey] = useState(0);
+
+  useEffect(() => {
+    if (hasSearched && results.length === 0) {
+      setErrorKey((prev) => prev + 1);
+    }
+  }, [results, hasSearched, query]);
+
   if (hasSearched && results.length === 0) {
     return (
       <div className="filter-results">
-        <p>Hittade tyvärr inga rabatterade produkter 😔</p>
+        <p key={`${errorKey}-${query}`}>
+          Hittade tyvärr inga rabatterade produkter 😔
+        </p>
       </div>
     );
   }
